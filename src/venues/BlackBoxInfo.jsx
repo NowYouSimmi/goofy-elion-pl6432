@@ -254,6 +254,10 @@ export default function BlackBoxInfo({ openPDF, openGallery }) {
           <span style={label}>Full Seating Bank (into lowered pit):</span>{" "}
           <span style={value}>179</span>
         </p>
+          <p>
+          <span style={label}>Half Seating Bank with Control Position:</span>{" "}
+          <span style={value}>88</span>
+        </p>
         <p>
           <span style={label}>Courtesy Seating Only:</span>{" "}
           <span style={value}>28</span>
