@@ -5,14 +5,22 @@ const DOCS_URL =
   "https://script.google.com/macros/s/AKfycbxQ2se4qxGkhmK15KGjTTh_YS7v1NyZXC3rAqz1pvVdUjGxanUdR7u4-zTpFHqVlfFbWQ/exec";
 
 function normalizeDoc(raw) {
+  const title =
+    String(raw.Title || "").trim() ||
+    String(raw.Doc || "").trim() ||      // prefer Doc name
+    String(raw.Link || "").trim() ||     // last resort: URL
+    "Untitled link";
+
   return {
     type: String(raw.Type || "Other").trim(),
-    title: String(raw.Title || raw.Link || "Untitled link").trim(),
+    title,
+    doc: String(raw.Doc || "").trim(),
     link: String(raw.Link || "").trim(),
     notes: String(raw.Notes || "").trim(),
     _raw: raw,
   };
 }
+
 
 export default function UsefulDocsLinks({ setPage }) {
   const [docs, setDocs] = useState([]);
@@ -236,3 +244,4 @@ export default function UsefulDocsLinks({ setPage }) {
     </div>
   );
 }
+
